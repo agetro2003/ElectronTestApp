@@ -17,6 +17,7 @@ function encryptExcel(inputPath, outputPath, publicKey) {
     const encryptedData = encryptLargeData(excelData, publicKey);
   
     // Escribir el archivo encriptado
+    console.log('Writing encrypted file:', outputPath);
     fs.writeFileSync(outputPath, encryptedData);
   }
 
@@ -89,7 +90,6 @@ app.on('ready', () => {
     try {
       // direccion del escritorio
       const desktopPath = app.getPath('desktop');
-      console.log('Desktop path:', desktopPath);
         const encryptedFile = path.join(desktopPath, 'encrypted.xlsx');
         encryptExcel(filePath, encryptedFile, publicKey);
     } catch (error) {
